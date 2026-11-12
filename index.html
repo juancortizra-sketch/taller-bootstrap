@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viajes & Aventuras - Agencia de Viajes</title>
+    
+    
+    <!-- 1. CDN Oficial de Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- 2.  hoja de estilos local -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN (NAVBAR) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">✈️ Viajes & Aventuras</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#destinos">Destinos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reserva">Simular Reserva</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CARRUSEL PRINCIPAL (HERO) -->
+    <header id="inicio" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#inicio" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#inicio" data-bs-slide-to="1"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active bg-dark text-white p-5 text-center hero-slide-1">
+                <div class="py-5 bg-opacity-50 bg-dark rounded">
+                    <h1 class="display-4 fw-bold">Descubre el Mundo con Nosotros</h1>
+                    <p class="lead">Paquetes turísticos todo incluido a precios increíbles.</p>
+                    <a href="#destinos" class="btn btn-warning btn-lg fw-semibold">Explorar Destinos</a>
+                </div>
+            </div>
+            <div class="carousel-item bg-secondary text-white p-5 text-center hero-slide-2">
+                <div class="py-5 bg-opacity-50 bg-dark rounded">
+                    <h1 class="display-4 fw-bold">Planes Caribe & Europa 2024</h1>
+                    <p class="lead">Reserva con anticipación y obtén hasta un 20% de descuento.</p>
+                    <a href="#reserva" class="btn btn-light btn-lg fw-semibold">Cotizar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CATÁLOGO DE 8 DESTINOS CON FILTROS -->
+    <section id="destinos" class="container my-5">
+        <h2 class="text-center fw-bold mb-3">Nuestros Paquetes Turísticos</h2>
+        <p class="text-center text-muted mb-4">Selecciona tu categoría preferida para filtrar las opciones:</p>
+
+        <!-- Botones de Filtro -->
+        <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+            <button class="btn btn-outline-primary active" onclick="filtrarDestinos('todos', this)">Todos</button>
+            <button class="btn btn-outline-primary" onclick="filtrarDestinos('playa', this)">Playa & Caribe</button>
+            <button class="btn btn-outline-primary" onclick="filtrarDestinos('ciudad', this)">Ciudades & Cultura</button>
+            <button class="btn btn-outline-primary" onclick="filtrarDestinos('naturaleza', this)">Naturaleza & Aventura</button>
+        </div>
+
+        <div class="row g-4" id="grid-destinos">
+            
+            <!-- Destino 1 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 destino-card playa">
+                <div class="card h-100 shadow-sm">
+                    <img src="imagenes/cancun.jpeg" class="card-img-top" alt="Cancún">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-info text-dark w-auto mb-2">Playa & Caribe</span>
+                        <h5 class="card-title fw-bold">Cancún todo Incluido</h5>
+                        <p class="card-text text-muted small">5 días / 4 noches en resort 5 estrellas con tiquetes aéreos.</p>
+                        <p class="fw-bold fs-5 text-primary mt-auto">$2.800.000 COP / persona</p>
+                        <button class="btn btn-outline-dark mb-2" onclick="verDetalle('Cancún todo Incluido', 'Incluye tiquetes ida y vuelta, alimentación ilimitada, licores nacionales, traslados aeropuerto-hotel y tour a Chichén Itzá.', '$2.800.000')">Ver Detalle</button>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Cancún todo Incluido', 2800000)">Seleccionar para Reserva</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destino 2 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 destino-card ciudad">
+                <div class="card h-100 shadow-sm">
+                    <img src="imagenes/paris.jpg" class="card-img-top" alt="París">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-warning text-dark w-auto mb-2">Ciudades & Cultura</span>
+                        <h5 class="card-title fw-bold">París Romántico</h5>
+                        <p class="card-text text-muted small">7 días explorando París, Torre Eiffel y Museo del Louvre.</p>
+                        <p class="fw-bold fs-5 text-primary mt-auto">$6.500.000 COP / persona</p>
+                        <button class="btn btn-outline-dark mb-2" onclick="verDetalle('París Romántico', 'Incluye vuelos internacionales, alojamiento céntrico con desayuno buffet y pases de entrada a la Torre Eiffel y crucero por el Sena.', '$6.500.000')">Ver Detalle</button>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('París Romántico', 6500000)">Seleccionar para Reserva</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destino 3 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 destino-card playa">
+                <div class="card h-100 shadow-sm">
+                    <img src="imagenes/san andres.jpeg" class="card-img-top" alt="San Andrés">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-info text-dark w-auto mb-2">Playa & Caribe</span>
+                        <h5 class="card-title fw-bold">San Andrés Mágico</h5>
+                        <p class="card-text text-muted small">4 días / 3 noches en el mar de los siete colores.</p>
+                        <p class="fw-bold fs-5 text-primary mt-auto">$1.600.000 COP / persona</p>
+                        <button class="btn btn-outline-dark mb-2" onclick="verDetalle('San Andrés Mágico', 'Vuelos directos, hotel cerca a la playa con desayuno y cena, tour en catamarán por Haynes Cay y Johnny Cay.', '$1.600.000')">Ver Detalle</button>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('San Andrés Mágico', 1600000)">Seleccionar para Reserva</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destino 4 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 destino-card naturaleza">
+                <div class="card h-100 shadow-sm">
+                    <img src="imagenes/amazonas.jpeg" class="card-img-top" alt="Amazonas">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-success w-auto mb-2">Naturaleza & Aventura</span>
+                        <h5 class="card-title fw-bold">Expedición Amazonas</h5>
+                        <p class="card-text text-muted small">5 días de eco-turismo y avistamiento en Leticia.</p>
+                        <p class="fw-bold fs-5 text-primary mt-auto">$2.100.000 COP / persona</p>
+                        <button class="btn btn-outline-dark mb-2" onclick="verDetalle('Expedición Amazonas', 'Alojamiento en eco-lodge, pensión completa, avistamiento de delfines rosados y visita a la reserva de monos.', '$2.100.000')">Ver Detalle</button>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Expedición Amazonas', 2100000)">Seleccionar para Reserva</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destino 5 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 destino-card playa">
+                <div class="card h-100 shadow-sm">
+                    <img src="imagenes/puntacana.jpg" class="card-img-top" alt="Punta Cana">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-info text-dark w-auto mb-2">Playa & Caribe</span>
+                        <h5 class="card-title fw-bold">Punta Cana Deluxe</h5>
+                        <p class="card-text text-muted small">6 días de descanso absoluto en República Dominicana.</p>
+                        <p class="fw-bold fs-5 text-primary mt-auto">$3.400.000 COP / persona</p>
+                        <button class="btn btn-outline-dark mb-2" onclick="verDetalle('Punta Cana Deluxe', 'Plan todo incluido en resort internacional frente a la playa, transporte de lujo y excursión a Isla Saona.', '$3.400.000')">Ver Detalle</button>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Punta Cana Deluxe', 3400000)">Seleccionar para Reserva</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destino 6 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 destino-card naturaleza">
+                <div class="card h-100 shadow-sm">
+                    <img src="imagenes/Cusco-and-Machu-Picchu.jpg" class="card-img-top" alt="Machu Picchu">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-success w-auto mb-2">Naturaleza & Aventura</span>
+                        <h5 class="card-title fw-bold">Cusco & Machu Picchu</h5>
+                        <p class="card-text text-muted small">5 días recorriendo la majestuosa cultura Inca en Perú.</p>
+                        <p class="fw-bold fs-5 text-primary mt-auto">$3.100.000 COP / persona</p>
+                        <button class="btn btn-outline-dark mb-2" onclick="verDetalle('Cusco & Machu Picchu', 'Vuelos, tren Expedition a Aguas Calientes, entradas a la ciudadela sagrada y guía especializado.', '$3.100.000')">Ver Detalle</button>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Cusco & Machu Picchu', 3100000)">Seleccionar para Reserva</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destino 7 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 destino-card ciudad">
+                <div class="card h-100 shadow-sm">
+                    <img src="imagenes/newyork.jpg" class="card-img-top" alt="Nueva York">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-warning text-dark w-auto mb-2">Ciudades & Cultura</span>
+                        <h5 class="card-title fw-bold">Nueva York Express</h5>
+                        <p class="card-text text-muted small">5 días en la gran manzana: Manhattan y Times Square.</p>
+                        <p class="fw-bold fs-5 text-primary mt-auto">$5.200.000 COP / persona</p>
+                        <button class="btn btn-outline-dark mb-2" onclick="verDetalle('Nueva York Express', 'Vuelos sin escalas, hotel céntrico en Manhattan y tarjeta de transporte para Metro y atracciones.', '$5.200.000')">Ver Detalle</button>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Nueva York Express', 5200000)">Seleccionar para Reserva</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destino 8 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 destino-card naturaleza">
+                <div class="card h-100 shadow-sm">
+                    <img src="imagenes/ejecafetero.png" class="card-img-top" alt="Eje Cafetero">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-success w-auto mb-2">Naturaleza & Aventura</span>
+                        <h5 class="card-title fw-bold">Eje Cafetero & Valle del Cocora</h5>
+                        <p class="card-text text-muted small">4 días entre fincas cafeteras y termales de Santa Rosa.</p>
+                        <p class="fw-bold fs-5 text-primary mt-auto">$1.250.000 COP / persona</p>
+                        <button class="btn btn-outline-dark mb-2" onclick="verDetalle('Eje Cafetero & Valle del Cocora', 'Alojamiento en típica finca campestre, experiencia interactiva del café, entradas a Parque del Café y termales.', '$1.250.000')">Ver Detalle</button>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Eje Cafetero & Valle del Cocora', 1250000)">Seleccionar para Reserva</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CALCULADORA DE RESERVA SIMULADA -->
+    <section id="reserva" class="container my-5 p-4 bg-light rounded shadow-sm">
+        <h3 class="fw-bold mb-3">📋 Cotizador de Reserva Simulada</h3>
+        <p class="text-muted small">Selecciona un paquete arriba o elígelo en el menú para calcular el costo total según el número de viajeros y servicios adicionales.</p>
+
+        <form id="reservaForm" class="row g-3">
+            <div class="col-12 col-md-6">
+                <label for="paqueteSelect" class="form-label fw-bold">Paquete Turístico</label>
+                <select id="paqueteSelect" class="form-select" onchange="calcularReserva()" required>
+                    <option value="0" data-nombre="Ninguno">-- Selecciona un destino --</option>
+                    <option value="2800000" data-nombre="Cancún todo Incluido">Cancún todo Incluido ($2.800.000)</option>
+                    <option value="6500000" data-nombre="París Romántico">París Romántico ($6.500.000)</option>
+                    <option value="1600000" data-nombre="San Andrés Mágico">San Andrés Mágico ($1.600.000)</option>
+                    <option value="2100000" data-nombre="Expedición Amazonas">Expedición Amazonas ($2.100.000)</option>
+                    <option value="3400000" data-nombre="Punta Cana Deluxe">Punta Cana Deluxe ($3.400.000)</option>
+                    <option value="3100000" data-nombre="Cusco & Machu Picchu">Cusco & Machu Picchu ($3.100.000)</option>
+                    <option value="5200000" data-nombre="Nueva York Express">Nueva York Express ($5.200.000)</option>
+                    <option value="1250000" data-nombre="Eje Cafetero & Valle del Cocora">Eje Cafetero ($1.250.000)</option>
+                </select>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <label for="numPersonas" class="form-label fw-bold">Número de Personas</label>
+                <input type="number" id="numPersonas" class="form-control" value="1" min="1" max="10" onchange="calcularReserva()" onkeyup="calcularReserva()" required>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <label for="numNoches" class="form-label fw-bold">Noches Adicionales ($150.000/noche)</label>
+                <input type="number" id="numNoches" class="form-control" value="0" min="0" max="15" onchange="calcularReserva()" onkeyup="calcularReserva()">
+            </div>
+
+            <!-- Opciones adicionales -->
+            <div class="col-12">
+                <label class="form-label fw-bold">Servicios Adicionales Opcionales:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="chkSeguro" value="120000" onchange="calcularReserva()">
+                    <label class="form-check-label" for="chkSeguro">Seguro Médico de Viaje e Inconvenientes (+$120.000 COP por persona)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="chkGuia" value="250000" onchange="calcularReserva()">
+                    <label class="form-check-label" for="chkGuia">Tour y Guía Privado Exclusivo (+$250.000 COP total)</label>
+                </div>
+            </div>
+
+            <!-- Resumen dinámico -->
+            <div class="col-12 mt-4 p-3 bg-white border rounded">
+                <h5 class="fw-bold">Resumen de la Cotización</h5>
+                <p class="mb-1"><b>Destino:</b> <span id="resumenDestino" class="text-primary">Ninguno seleccionado</span></p>
+                <p class="mb-1"><b>Pasajeros:</b> <span id="resumenPersonas">1</span> persona(s)</p>
+                <p class="mb-1"><b>Costo estimado total:</b> <span id="resumenTotal" class="fs-4 text-success fw-bold">$0 COP</span></p>
+            </div>
+
+            <div class="col-12">
+                <button type="button" class="btn btn-success btn-lg w-100 fw-bold" onclick="confirmarReservaSimulada()">Confirmar Reserva Simulada</button>
+            </div>
+        </form>
+
+        <div id="reservaAlert" class="alert alert-success mt-3 d-none" role="alert"></div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO -->
+    <section id="contacto" class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <h3 class="fw-bold text-center mb-4">Contacto & Asesoría Personalizada</h3>
+                <form id="contactForm" class="p-4 border rounded bg-white shadow-sm" novalidate>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-control" id="nombre" required>
+                        <div class="invalid-feedback">Por favor ingresa tu nombre completo.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" required>
+                        <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label">Consulta o Solicitud Especial</label>
+                        <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+                        <div class="invalid-feedback">Por favor escribe tu consulta.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 fw-bold">Enviar Consulta</button>
+                </form>
+                <div id="form-alert" class="alert alert-success mt-3 d-none">¡Tu mensaje ha sido enviado correctamente! Nos comunicaremos contigo en breve.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE BOOTSTRAP PARA DETALLE -->
+    <div class="modal fade" id="modalDetalle" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold" id="modalTitle">Detalle del Paquete</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalDescription" class="text-muted"></p>
+                    <p class="fw-bold fs-5 text-primary" id="modalPrice"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- 3. CDN Oficial de Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 4. Tu script de JavaScript local -->
+    <script src="js/script.js"></script>
+</body>
+</html>
