@@ -16,11 +16,11 @@ body {
 }
 
 .hero-slide-1 {
-    background-image: url('banner1.jpeg');
+    background-image: url('banner1.jpeg'); 
 }
 
 .hero-slide-2 {
-    background-image: url('banner2.jpeg');
+    background-image: url('banner2.jpeg'); 
 }
 
 section {
